@@ -17,21 +17,29 @@
     margin-top: 10px;
   }
 
-  .item-price{
+  .item-price {
     font-size: 2rem;
     font-weight: bold;
   }
 
-  .item-stock{
+  .item-stock {
     color: gray;
     margin-bottom: 10px;
   }
 
-  .add-to-cart-ctrl{
+  .out-of-stock {
+    background-color: red;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .add-to-cart-ctrl {
     width: 40%;
     margin-top: 10px;
 
-    input{
+    input {
       text-align: center;
     }
   }

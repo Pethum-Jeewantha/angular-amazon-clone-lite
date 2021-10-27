@@ -2,18 +2,22 @@
   <img class="item-image" src="{{item.image}}" alt="">
   <p class="item-description">{{item.description}}</p>
   <ng-container [ngSwitch]="item.rating">
-  <div *ngSwitchCase="5">⭐⭐⭐⭐⭐</div>
-  <div *ngSwitchCase="4">⭐⭐⭐⭐</div>
-  <div *ngSwitchCase="3">⭐⭐⭐</div>
-  <div *ngSwitchCase="2">⭐⭐</div>
-  <div *ngSwitchCase="1">⭐</div>
+    <div *ngSwitchCase="5">⭐⭐⭐⭐⭐</div>
+    <div *ngSwitchCase="4">⭐⭐⭐⭐</div>
+    <div *ngSwitchCase="3">⭐⭐⭐</div>
+    <div *ngSwitchCase="2">⭐⭐</div>
+    <div *ngSwitchCase="1">⭐</div>
   </ng-container>
-  <div class="item-price">${{item.price}}</div>
-  <div class="item-stock">In Stock: {{item.qty}}</div>
+  <div class="item-price">{{item.price | currency : 'USD'}}</div>
+  <div *ngIf="inCart !== item.qty" class="item-stock">In Stock: <span>{{item.qty - inCart}}</span></div>
+  <div *ngIf="inCart === item.qty" class="out-of-stock">Out of Stock</div>
   <div>Add to Cart</div>
   <div class="input-group mb-3 add-to-cart-ctrl">
-    <button class="btn btn-outline-secondary" type="button" (click)="updateCart(false)">-</button>
-    <input type="text" class="form-control" [(ngModel)]="inCart">
-    <button class="btn btn-outline-secondary" type="button" (click)="updateCart(true)">+</button>
+    <button (click)="updateCart(false)" [disabled]="inCart == 0" class="btn btn-outline-secondary" type="button">-
+    </button>
+    <input [(ngModel)]="inCart" [disabled]="true" class="form-control" type="text">
+    <button (click)="updateCart(true)" [disabled]="inCart === item.qty" class="btn btn-outline-secondary" type="button">
+      +
+    </button>
   </div>
 </div>
