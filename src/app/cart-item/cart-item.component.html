@@ -1,11 +1,19 @@
-<div>
-  <img src="https://m.media-amazon.com/images/I/615YaAiA-ML._AC_UL320_.jpg" alt="">
-  <p>Oculus Quest 2 — Advanced All-In-One Virtual Reality Headset — 128 GB</p>
-  <div>⭐⭐⭐⭐⭐</div>
-  <div>$99</div>
-  <div class="input-group mb-3">
-    <button class="btn btn-outline-secondary" type="button">-</button>
-    <input type="text" class="form-control" placeholder="">
-    <button class="btn btn-outline-secondary" type="button">+</button>
+<div class="cart-item">
+  <img class="item-image" src="{{item.image}}" alt="">
+  <p class="item-description">{{item.description}}</p>
+  <ng-container [ngSwitch]="item.rating">
+  <div *ngSwitchCase="5">⭐⭐⭐⭐⭐</div>
+  <div *ngSwitchCase="4">⭐⭐⭐⭐</div>
+  <div *ngSwitchCase="3">⭐⭐⭐</div>
+  <div *ngSwitchCase="2">⭐⭐</div>
+  <div *ngSwitchCase="1">⭐</div>
+  </ng-container>
+  <div class="item-price">${{item.price}}</div>
+  <div class="item-stock">In Stock: {{item.qty}}</div>
+  <div>Add to Cart</div>
+  <div class="input-group mb-3 add-to-cart-ctrl">
+    <button class="btn btn-outline-secondary" type="button" (click)="updateCart(false)">-</button>
+    <input type="text" class="form-control" [(ngModel)]="inCart">
+    <button class="btn btn-outline-secondary" type="button" (click)="updateCart(true)">+</button>
   </div>
 </div>
