@@ -3,13 +3,14 @@
   margin-bottom: 10px;
   width: 300px;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
 
-  .item-image{
+  .item-image {
     height: 320px;
     width: 250px;
     object-fit: contain;
