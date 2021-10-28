@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../dto/item";
 
 @Component({
@@ -8,18 +8,13 @@ import {Item} from "../dto/item";
 })
 export class CartItemComponent implements OnInit {
 
-  item = new Item(
-    'I001',
-    'https://m.media-amazon.com/images/I/41S3MKU9TjL._AC_UL320_.jpg',
-    'Apple Pencil (2nd Generation)',
-    4,
-    299,
-    5
-    )
+  @Input()
+  item!: Item;
 
   inCart = 0;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
