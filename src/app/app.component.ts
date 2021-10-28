@@ -25,4 +25,12 @@ export class AppComponent {
       this.cartItems.push({code: it.code, qty: inCart});
     }
   }
+
+  getTotalItemsInCart(): number {
+    let totalItems = 0;
+    this.cartItems.forEach(item => totalItems += item.qty)
+    return totalItems;
+  }
 }
+
+// Sir component ekakin component ekakta data yawane khmda? children athare?
