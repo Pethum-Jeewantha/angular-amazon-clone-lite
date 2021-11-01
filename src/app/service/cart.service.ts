@@ -7,8 +7,8 @@ import {Subject} from "rxjs";
 })
 export class CartService {
 
-  cartItems: Array<{ code: string, qty: number }> = [];
-  totalItems: Subject<number> = new Subject<number>();
+  private cartItems: Array<{ code: string, qty: number }> = [];
+  private totalItems: Subject<number> = new Subject<number>();
 
   constructor() {
   }
@@ -48,5 +48,10 @@ export class CartService {
 
   getAllCartItems(): Array<{ code: string, qty: number }> {
     return this.cartItems;
+  }
+
+  removeItemFromCart(code: string): void {
+    this.cartItems = this.cartItems.filter(item => item.code !== code);
+    this.calculateTotalItems();
   }
 }
