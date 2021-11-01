@@ -39,4 +39,10 @@ export class CartService {
     this.cartItems.forEach(item => totalItems += item.qty);
     this.totalItems.next(totalItems);
   }
+
+  getQtyInCart(code: string): number {
+    const item = this.cartItems.find(item => item.code === code);
+
+    return item ? item.qty : 0;
+  }
 }

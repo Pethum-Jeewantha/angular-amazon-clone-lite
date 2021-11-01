@@ -22,6 +22,11 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadItem();
+    this.loadInCartQty();
+  }
+
+  loadInCartQty() {
+    this.inCart = this.cartService.getQtyInCart(this.item.code);
   }
 
   loadItem() {
