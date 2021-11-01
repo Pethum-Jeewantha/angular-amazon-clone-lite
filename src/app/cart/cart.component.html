@@ -4,8 +4,9 @@
                   [item]="getItem(item.code)"
                   [qty]="item.qty"></app-cart-row>
   </div>
-  <div>
-    <div>Container2</div>
+  <div class="checkout-container">
+    <h2>Net Total: {{25|currency:'USD'}}</h2>
+    <button>Checkout</button>
   </div>
 </div>
 <div *ngIf="cartItems.length === 0" class="empty-cart">
