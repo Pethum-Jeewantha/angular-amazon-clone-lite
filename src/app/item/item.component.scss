@@ -9,6 +9,8 @@
 
   .item-image {
     width: 250px;
+    max-height: 300px;
+    object-fit: contain;
   }
 
   .item-title {

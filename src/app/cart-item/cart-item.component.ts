@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../dto/item";
 import {CartService} from "../service/cart.service";
-import {ItemService} from "../service/item.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -17,8 +16,8 @@ export class CartItemComponent implements OnInit {
   inCart = 0;
 
   constructor(private cartService: CartService,
-              private itemService: ItemService,
               private router: Router) {
+
   }
 
   ngOnInit(): void {
@@ -30,6 +29,6 @@ export class CartItemComponent implements OnInit {
   }
 
   navigateToItem() {
-    this.router.navigateByUrl('/items');
+    this.router.navigate(['/items', this.item.code]);
   }
 }
