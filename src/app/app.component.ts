@@ -32,5 +32,3 @@ export class AppComponent {
     return totalItems;
   }
 }
-
-// Sir component ekakin component ekakta data yawane khmda? children athare?
