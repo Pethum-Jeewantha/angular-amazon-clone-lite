@@ -1,7 +1,15 @@
-<div class="cart-items-container">
-  <app-cart-row (onRemove)="loadAllCartItems()" *ngFor="let item of cartItems" [item]="getItem(item.code)"
-                [qty]="item.qty"></app-cart-row>
+<div *ngIf="cartItems.length !== 0" class="cart">
+  <div class="cart-items-container">
+    <app-cart-row (click)="navigateToItem(item.code)" (onRemove)="loadAllCartItems()" *ngFor="let item of cartItems"
+                  [item]="getItem(item.code)"
+                  [qty]="item.qty"></app-cart-row>
+  </div>
+  <div>
+    <div>Container2</div>
+  </div>
 </div>
-<div>
-  <div>Container2</div>
+<div *ngIf="cartItems.length === 0" class="empty-cart">
+  <span class="cart-icon"></span>
+  <h1>Cart is empty. Please add items to cart first</h1>
+  <div><a href="" routerLink="/home">Go to Product Listing</a></div>
 </div>
