@@ -1,11 +1,12 @@
 <div *ngIf="cartItems.length !== 0" class="cart">
   <div class="cart-items-container">
-    <app-cart-row (click)="navigateToItem(item.code)" (onRemove)="loadAllCartItems()" *ngFor="let item of cartItems"
+    <app-cart-row (click)="navigateToItem(item.code)" (onRemove)="loadAllCartItems(); calculateNetTotal()"
+                  *ngFor="let item of cartItems"
                   [item]="getItem(item.code)"
                   [qty]="item.qty"></app-cart-row>
   </div>
   <div class="checkout-container">
-    <h2>Net Total: {{25|currency:'USD'}}</h2>
+    <h2>Net Total: {{total|currency:'USD'}}</h2>
     <button>Checkout</button>
   </div>
 </div>
