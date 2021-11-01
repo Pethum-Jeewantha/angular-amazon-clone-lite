@@ -3,11 +3,11 @@ import {CartService} from "../service/cart.service";
 import {ItemService} from "../service/item.service";
 
 @Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private itemService: ItemService) {
