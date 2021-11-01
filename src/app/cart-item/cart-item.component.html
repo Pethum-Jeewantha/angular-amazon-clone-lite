@@ -1,6 +1,6 @@
 <div (click)="navigateToItem()" class="cart-item">
   <img class="item-image" src="{{item.image}}" alt="">
-  <p class="item-description">{{item.description}}</p>
+  <p class="item-description">{{item.title}}</p>
   <ng-container [ngSwitch]="item.rating">
     <div *ngSwitchCase="5">⭐⭐⭐⭐⭐</div>
     <div *ngSwitchCase="4">⭐⭐⭐⭐</div>

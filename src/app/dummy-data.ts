@@ -7,7 +7,8 @@ export const DUMMY_DATA: Array<Item> = [
     'Apple Pencil (2nd Generation)',
     4,
     299,
-    5
+    5,
+    '<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut dolor doloribus eveniet iste non sed? Asperiores dolorum earum iusto nemo nesciunt odit omnis recusandae. Corporis ducimus obcaecati voluptas voluptatum.</div><div>Aliquid facilis id labore libero maiores nemo quaerat quibusdam recusandae repellendus sapiente? Aliquam cumque iusto maxime officiis provident quae temporibus ut vero? Accusamus accusantium dicta earum eum excepturi, explicabo hic?</div><div>Aliquam aliquid, aperiam aspernatur, beatae deleniti deserunt dolores ea earum esse est, et expedita explicabo id illum impedit ipsa nostrum nulla odio provident quaerat quibusdam quis recusandae sequi vel veniam.</div><div>Adipisci aspernatur commodi, consequatur, delectus deserunt distinctio earum excepturi explicabo hic laborum laudantium necessitatibus nemo obcaecati officia qui quia, quibusdam quidem sit ullam vitae. Dolorem labore libero molestiae repudiandae saepe!</div><div>Amet, aperiam consequatur dolores doloribus eius, est excepturi facilis ipsam modi porro possimus provident quam repellendus sint sunt temporibus totam vitae voluptatum. Aperiam commodi cumque deleniti explicabo labore quis repellat.</div>'
   ),
   new Item(
     'I002',
