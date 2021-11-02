@@ -9,13 +9,17 @@ import {ItemService} from "../service/item.service";
 })
 export class HomeComponent implements OnInit {
 
-  items!: Array<Item>;
+  items: Array<Item> = [];
 
   constructor(private itemService: ItemService) {
-    this.items = itemService.getAllItems();
   }
 
   ngOnInit(): void {
+    this.loadAllItems();
+  }
+
+  loadAllItems() {
+    this.itemService.getAllItems().subscribe(value => this.items = value, error => console.log(error));
   }
 
   // items = DUMMY_DATA;

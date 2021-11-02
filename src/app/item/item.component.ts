@@ -22,7 +22,6 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadItem();
-    this.loadInCartQty();
   }
 
   loadInCartQty() {
@@ -32,13 +31,12 @@ export class ItemComponent implements OnInit {
   loadItem() {
     const itemCode = this.activeRoute.snapshot.paramMap.get('code');
     if (itemCode) {
-      const item = this.itemService.getItem(itemCode);
-
-      if (!item) {
-        this.router.navigateByUrl('/home')
-      } else {
+      const item = this.itemService.getItem(itemCode).subscribe(item => {
         this.item = item;
-      }
+        this.loadInCartQty();
+      }, error => {
+        this.router.navigateByUrl('/home');
+      });
     } else {
       this.router.navigateByUrl('/home');
     }
