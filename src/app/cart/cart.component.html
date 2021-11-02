@@ -1,8 +1,8 @@
 <div *ngIf="cartItems.length !== 0" class="cart">
   <div class="cart-items-container">
-    <app-cart-row (click)="navigateToItem(item.code)" (onRemove)="loadAllCartItems(); calculateNetTotal()"
+    <app-cart-row (click)="navigateToItem(item.item.code)" (onRemove)="loadAllCartItems(); calculateNetTotal()"
                   *ngFor="let item of cartItems"
-                  [item]="getItem(item.code)"
+                  [item]="item.item"
                   [qty]="item.qty"></app-cart-row>
   </div>
   <div class="checkout-container">

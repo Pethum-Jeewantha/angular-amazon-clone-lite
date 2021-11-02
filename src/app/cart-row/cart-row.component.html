@@ -3,5 +3,4 @@
 <div class="item-unit-price">{{item.price|currency:'USD'}}</div>
 <div class="item-qty">{{qty}}</div>
 <div class="item-total-price">{{(item.price * qty) |currency:'USD'}}</div>
-<div (click)="removeFromCart()" class="remove">❌</div>
-
+<div (click)="removeFromCart(item.code)" class="remove">❌</div>

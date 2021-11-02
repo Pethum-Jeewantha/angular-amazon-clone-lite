@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from "../service/cart.service";
-import {ItemService} from "../service/item.service";
 import {Item} from "../dto/item";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-cart',
@@ -13,10 +11,9 @@ import {Observable} from "rxjs";
 export class CartComponent implements OnInit {
 
   total = 0;
-  cartItems!: Array<{ code: string, qty: number }>;
+  cartItems!: Array<{ item: Item, qty: number }>;
 
   constructor(private cartService: CartService,
-              public itemService: ItemService,
               private router: Router) {
   }
 
@@ -27,10 +24,6 @@ export class CartComponent implements OnInit {
 
   loadAllCartItems() {
     this.cartItems = this.cartService.getAllCartItems();
-  }
-
-  getItem(code: string): Observable<Item> {
-    return this.itemService.getItem(code);
   }
 
   navigateToItem(code: string) {

@@ -1,4 +1,4 @@
-<div class="item-container">
+<div *ngIf="item" class="item-container">
   <img alt="product image" class="item-image" src="{{item.image}}">
   <div>
     <h2 class="item-title">{{item.title}}</h2>
@@ -24,4 +24,4 @@
     </div>
   </div>
 </div>
-<div [innerHTML]="item.description ?? 'No Description'" class="item-description"></div>
+<div *ngIf="item" [innerHTML]="item.description ?? 'No Description'" class="item-description"></div>
