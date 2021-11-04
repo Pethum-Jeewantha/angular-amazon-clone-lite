@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Item} from "../dto/item";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
+import {OrderDetail} from "../dto/order-detail";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,9 @@ export class CartService {
   private cartItems: Array<{ item: Item, qty: number }> = [];
   private totalItems: Subject<number> = new Subject<number>();
 
-  constructor() {
+  readonly ORDER_SERVICE_API = 'http://localhost:8080/amazon/orders';
+
+  constructor(private http: HttpClient) {
   }
 
   updateCart(it: Item, toCart: number) {
@@ -63,5 +67,20 @@ export class CartService {
     });
 
     return total;
+  }
+
+  placeCart(): Observable<void> {
+    const orderDetails: Array<OrderDetail> = [];
+
+    this.cartItems.forEach(ci => {
+      orderDetails.push(new OrderDetail(ci.item.code, ci.qty, ci.item.price));
+    });
+
+    return this.http.post<void>(this.ORDER_SERVICE_API, orderDetails)
+  }
+
+  clearCart(): void {
+    this.cartItems = [];
+    this.calculateTotalItems();
   }
 }

@@ -33,4 +33,14 @@ export class CartComponent implements OnInit {
   calculateNetTotal(): void {
     this.total = this.cartService.getNetTotal();
   }
+
+  checkout(): void {
+    this.cartService.placeCart().subscribe(value => {
+      alert("Order has been placed");
+      this.cartService.clearCart();
+      this.router.navigateByUrl('/home');
+    }, error => {
+      console.log(error);
+    });
+  }
 }
