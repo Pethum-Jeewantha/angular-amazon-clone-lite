@@ -11,6 +11,8 @@ import {CartComponent} from './cart/cart.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {CartRowComponent} from './cart-row/cart-row.component';
 import {HttpClientModule} from "@angular/common/http";
+import {NgProgressModule} from "ngx-progressbar";
+import {NgProgressHttpModule} from "ngx-progressbar/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,12 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgProgressModule.withConfig({
+      color: '#d9970a',
+      spinner: false
+    }),
+    NgProgressHttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

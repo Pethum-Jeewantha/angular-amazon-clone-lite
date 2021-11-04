@@ -1,1 +1,4 @@
 <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
+<div *ngIf="items.length === 0" class="loader-container">
+  <div class="lds-dual-ring"></div>
+</div>
