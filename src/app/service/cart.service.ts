@@ -32,6 +32,7 @@ export class CartService {
     }
 
     this.calculateTotalItems();
+    localStorage.setItem('cart-details', JSON.stringify(this.cartItems));
   }
 
   updateTotalCartItems(): Subject<number> {
@@ -79,8 +80,14 @@ export class CartService {
     return this.http.post<void>(this.ORDER_SERVICE_API, orderDetails)
   }
 
+  restorePreviousState(): void {
+    this.cartItems = JSON.parse(localStorage.getItem('cart-details') ?? '[]');
+    this.calculateTotalItems();
+  }
+
   clearCart(): void {
     this.cartItems = [];
     this.calculateTotalItems();
+    localStorage.removeItem('cart-details');
   }
 }
