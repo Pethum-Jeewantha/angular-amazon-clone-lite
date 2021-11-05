@@ -13,6 +13,8 @@ import {CartRowComponent} from './cart-row/cart-row.component';
 import {HttpClientModule} from "@angular/common/http";
 import {NgProgressModule} from "ngx-progressbar";
 import {NgProgressHttpModule} from "ngx-progressbar/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {NgProgressHttpModule} from "ngx-progressbar/http";
       color: '#d9970a',
       spinner: false
     }),
-    NgProgressHttpModule
+    NgProgressHttpModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

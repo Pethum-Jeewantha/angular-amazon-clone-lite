@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from "../dto/item";
 import {ItemService} from "../service/item.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,10 @@ import {ItemService} from "../service/item.service";
 export class HomeComponent implements OnInit {
 
   items: Array<Item> = [];
+  onError = false;
 
-  constructor(private itemService: ItemService) {
+  constructor(private itemService: ItemService,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -19,7 +22,16 @@ export class HomeComponent implements OnInit {
   }
 
   loadAllItems() {
-    this.itemService.getAllItems().subscribe(value => this.items = value, error => console.log(error));
+    this.onError = false;
+    this.itemService.getAllItems().subscribe(value => {
+      this.items = value
+    }, error => {
+      console.log(error);
+      this.toastrService.error(error.message, "Failed to fetch Data", {
+        positionClass: 'toast-center-center',
+        progressBar: true
+      }).onHidden.subscribe(value => this.onError = true);
+    });
   }
 
   // items = DUMMY_DATA;
