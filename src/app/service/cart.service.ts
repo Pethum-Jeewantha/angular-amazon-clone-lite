@@ -3,6 +3,7 @@ import {Item} from "../dto/item";
 import {Observable, Subject} from "rxjs";
 import {OrderDetail} from "../dto/order-detail";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CartService {
   private cartItems: Array<{ item: Item, qty: number }> = [];
   private totalItems: Subject<number> = new Subject<number>();
 
-  readonly ORDER_SERVICE_API = 'http://localhost:8080/amazon/orders';
+  readonly ORDER_SERVICE_API = `${environment.baseAPI}/orders`;
 
   constructor(private http: HttpClient) {
   }
@@ -58,6 +59,11 @@ export class CartService {
   removeItemFromCart(code: string): void {
     this.cartItems = this.cartItems.filter(item => item.item.code !== code);
     this.calculateTotalItems();
+    if (this.cartItems.length === 0) {
+      localStorage.removeItem('cart-details');
+    } else {
+      localStorage.setItem('cart-details', JSON.stringify(this.cartItems));
+    }
   }
 
   getNetTotal(): number {

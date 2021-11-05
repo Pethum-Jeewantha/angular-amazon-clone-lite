@@ -3,13 +3,14 @@ import {Item} from "../dto/item";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  readonly ITEM_SERVICE_API = 'http://localhost:8080/amazon/items';
+  readonly ITEM_SERVICE_API = `${environment.baseAPI}/items`;
 
   constructor(private http: HttpClient) {
   }
