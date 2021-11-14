@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-sign-in',
@@ -7,10 +8,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() {
+  needHelp = false;
+
+  constructor(private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.toastrService.clear();
   }
 
 }
