@@ -3,26 +3,33 @@
 </a>
 <form class="sign-up-container">
   <h2>Create account</h2>
-  <div class="form-group invalid">
+  <div [class.invalid]="txtNameModel.invalid && txtNameModel.dirty" class="form-group">
     <label for="txt-name">Your name</label>
-    <input #txtName id="txt-name" type="text">
-    <small *ngIf="false" class="helper-text"><span class="exclamation-icon"></span>Passwords must be at least 6
+    <input #txtName #txtNameModel="ngModel" [(ngModel)]="registrationDetail.name" id="txt-name" name="name"
+           pattern="^[A-Za-z ]+$" required type="text">
+    <small *ngIf="txtNameModel.invalid && txtNameModel.dirty" class="helper-text"><span class="exclamation-icon"></span>Passwords
+      must be at least 6
       characters.</small>
   </div>
-  <div class="form-group">
-    <label for="txt-email">Mobile number or email</label>
-    <input id="txt-email" type="text">
-    <small *ngIf="false" class="helper-text"><span class="exclamation-icon"></span></small>
+  <div [class.invalid]="txtUserIdModel.invalid && txtUserIdModel.dirty" class="form-group">
+    <label for="txt-userId">Mobile number or email</label>
+    <input #txtUserIdModel=ngModel [(ngModel)]="registrationDetail.userId" id="txt-userId" minlength="5" name="user-id"
+           pattern="[^:]+" required type="text">
+    <small *ngIf="txtUserIdModel.invalid && txtUserIdModel.dirty" class="helper-text"><span
+      class="exclamation-icon"></span></small>
   </div>
-  <div class="form-group">
+  <div [class.invalid]="txtPasswordModel.invalid && txtPasswordModel.dirty" class="form-group">
     <label for="txt-password">Password</label>
-    <input id="txt-password" placeholder="At least 6 characters" type="text">
+    <input #txtPasswordModel="ngModel" [(ngModel)]="registrationDetail.password" id="txt-password" minlength="6"
+           name="password" placeholder="At least 6 characters" required type="text">
     <small class="helper-text"><span class="exclamation-icon"></span>Passwords must be at least 6 characters.</small>
   </div>
-  <div class="form-group">
+  <div [class.invalid]="txtConfirmPasswordModel.invalid && txtConfirmPasswordModel.dirty" class="form-group">
     <label for="txt-confirm-password">Re-enter password</label>
-    <input id="txt-confirm-password" type="text">
-    <small *ngIf="false" class="helper-text"><span class="exclamation-icon"></span></small>
+    <input #txtConfirmPasswordModel="ngModel" [(ngModel)]="registrationDetail.confirmPassword" id="txt-confirm-password"
+           maxlength="6" name="confirm-password" required type="text">
+    <small *ngIf="txtConfirmPasswordModel.invalid && txtConfirmPasswordModel.dirty" class="helper-text"><span
+      class="exclamation-icon"></span></small>
   </div>
   <div class="form-group">
     <button>Continue</button>
