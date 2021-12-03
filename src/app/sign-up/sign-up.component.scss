@@ -61,7 +61,7 @@ form {
   }
 }
 
-.exclamation-icon {
+.form-group:not(.invalid) .exclamation-icon {
   height: 13px;
   width: 14px;
   background-position: -166px -130px;
@@ -70,6 +70,29 @@ form {
   background-repeat: no-repeat;
   display: inline-block;
   vertical-align: text-bottom;
+}
+
+.form-group.invalid {
+
+  input {
+    border-color: #d00;
+    box-shadow: 0 0 0 3px rgba(221, 0, 0, .1) inset;
+  }
+
+  .helper-text {
+    color: #c40000;
+  }
+
+  .exclamation-icon {
+    height: 13px;
+    width: 14px;
+    background-position: -141px -130px;
+    background-image: url(https://m.media-amazon.com/images/S/sash/mPGmT0r6IeTyIee.png);
+    background-size: 400px 750px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
 }
 
 button {
