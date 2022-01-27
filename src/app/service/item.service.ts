@@ -20,32 +20,28 @@ export class ItemService {
   }
 
   getItem(code: string): Observable<Item> {
-    return this.http.get<Item>(this.ITEM_SERVICE_API, {
-      params: {
-        code: code
-      }
-    }).pipe(map(convertToItem));
+    return this.http.get<Item>(`${this.ITEM_SERVICE_API}/${code}`).pipe(map(convertToItem));
   }
 }
 
 function convertToItem(item: any): Item {
   switch (item.rating as any) {
-    case "SECOND":
+    case 2:
       item.rating = 2;
       break;
-    case "THIRD":
+    case 3:
       item.rating = 3;
       break;
-    case "FOURTH":
+    case 4:
       item.rating = 4;
       break;
-    case "FIFTH":
+    case 5:
       item.rating = 5;
       break;
     default:
       item.rating = 1;
   }
   item.price = (item as any).unitPrice;
-
+  item.code = (item as any)._id;
   return item;
 }
