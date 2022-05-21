@@ -3,6 +3,7 @@ import {Title} from "@angular/platform-browser";
 import {ToastrService} from "ngx-toastr";
 import {User} from "../dto/user";
 import {NgModel} from "@angular/forms";
+import {SignupService} from "../service/signup.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -22,8 +23,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
     password: '',
     confirmPassword: ''
   }
+  onProgress = false;
 
-  constructor(private titleService: Title, private toastrService: ToastrService) {
+  constructor(private titleService: Title, private toastrService: ToastrService, private signupService: SignupService) {
   }
 
   ngOnInit(): void {
@@ -59,5 +61,27 @@ export class SignUpComponent implements OnInit, AfterViewInit {
         }
     }
     return '';
+  }
+
+  onSubmit() {
+    const user: User = {
+      userId: this.registrationDetail.userId,
+      name: this.registrationDetail.name,
+      password: this.registrationDetail.password,
+    }
+
+    this.signupService.signupUser(user).subscribe((value) => {
+      this.onProgress = false;
+      this.toastrService.success("User has been Saved", "Success", {
+        positionClass: 'toast-bottom-right',
+      });
+    }, error => {
+      this.onProgress = false;
+      this.toastrService.error("Failed to save. Try again!", "Error", {
+        positionClass: 'toast-bottom-right',
+        progressBar: true
+      });
+      console.error(error);
+    })
   }
 }
