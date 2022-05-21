@@ -1,4 +1,4 @@
-# AmazonClone
+# Amazon Clone
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
