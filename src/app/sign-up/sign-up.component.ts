@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 - present Pethum Jeewantha. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+ */
+
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {ToastrService} from "ngx-toastr";

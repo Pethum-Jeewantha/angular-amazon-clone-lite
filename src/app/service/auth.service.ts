@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 - present Pethum Jeewantha. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+ */
+
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
